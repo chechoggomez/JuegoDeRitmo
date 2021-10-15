@@ -477,7 +477,7 @@ namespace MidiPlayerTK
         ///         {
         ///             // Log if event is a note on
         ///             if (mptkEvent.Command == MPTKCommand.NoteOn)
-        ///                 Debug.Log($"Note on Time:{mptkEvent.RealTime} millisecond  Note:{mptkEvent.Value}  Duration:{mptkEvent.Duration} millisecond  Velocity:{mptkEvent.Velocity}");
+        ///                 Debug.Log($"Note on Time:{mptkEvent.RealTime} millisecond  Note:{notelist[Random.Range(0, 9)]}  Duration:{mptkEvent.Duration} millisecond  Velocity:{mptkEvent.Velocity}");
         ///                 
         ///             // Uncomment to display all MIDI events
         ///             // Debug.Log(mptkEvent.ToString());

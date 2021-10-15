@@ -84,7 +84,7 @@ namespace MPTKDemoCatchMusic
                         //Debug.Log($"NoteOn Channel:{note.Channel}  Preset index:{midiStreamPlayer.MPTK_ChannelPresetGetIndex(note.Channel)}  Preset name:{midiStreamPlayer.MPTK_ChannelPresetGetName(note.Channel)}");
                         if (mptkEvent.Value > 40 && mptkEvent.Value < 100)// && note.Channel==1)
                         {
-                            // Z position is set depending the note value:mptkEvent.Value
+                            // Z position is set depending the note value:notelist[Random.Range(0, 9)]
                             float z = Mathf.Lerp(minZ, maxZ, (mptkEvent.Value - 40) / 60f);
                             countZ[Convert.ToInt32(z - minZ)]++;
                             // Y position is set depending the count of object at the z position
@@ -107,7 +107,7 @@ namespace MPTKDemoCatchMusic
                     case MPTKCommand.PatchChange:
                         {
                             //Debug.Log($"PatchChange Channel:{note.Channel}  Preset index:{note.Value}");
-                            // Z position is set depending the note value:mptkEvent.Value
+                            // Z position is set depending the note value:notelist[Random.Range(0, 9)]
                             float z = Mathf.Lerp(minZ, maxZ, mptkEvent.Value / 127f);
                             // Y position is set depending the count of objects at the z position
                             countZ[Convert.ToInt32(z - minZ)]++;
