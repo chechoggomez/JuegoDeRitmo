@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using MidiPlayerTK;
 
 
 public class GameManager : MonoBehaviour
@@ -30,6 +31,8 @@ public class GameManager : MonoBehaviour
     public Transform RatingsPosMiss;
     public int combo = 0;
     public int multiplicador = 0;
+    public MidiFilePlayer audPlayer;
+    public float delay = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +41,7 @@ public class GameManager : MonoBehaviour
         startPlaying = false;
         Puntos = 0;
         Score.text = "Score: n/a";
+
         
 
     }
@@ -118,13 +122,20 @@ public class GameManager : MonoBehaviour
                 startPlaying = true;
                 theBS.hasStarted = true;
                 theMusic.Play();
-                cameramove.Play("CameraMovement");
+                //cameramove.Play("CameraMovement");
                 //cameramove.SetTrigger("cameramove");
-                
+                Invoke("PlayAudioDelayed",delay);
 
 
 
             }
         }   
     }
+
+    void PlayAudioDelayed()
+    {
+        audPlayer.MPTK_Play();
+
+    }
+
 }

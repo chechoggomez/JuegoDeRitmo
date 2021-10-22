@@ -324,6 +324,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114662785300262660, guid: 32a8d8859acf18d4ba134834a876d5ea,
         type: 3}
+      propertyPath: playOnStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114662785300262660, guid: 32a8d8859acf18d4ba134834a876d5ea,
+        type: 3}
       propertyPath: midiNameToPlay
       value: pianoxd
       objectReference: {fileID: 0}
@@ -945,7 +950,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 194cd210e69282e43b0bcbb446e32bd8, type: 2}
   m_CullingMode: 0
@@ -1651,6 +1656,18 @@ Transform:
   m_Father: {fileID: 519420032}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &831373950 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114662785300262660, guid: 32a8d8859acf18d4ba134834a876d5ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 188042903}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fb0999ab241539438b0b012d2ea9779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &847830972
 GameObject:
   m_ObjectHideFlags: 0
@@ -2787,6 +2804,8 @@ MonoBehaviour:
   RatingsPosMiss: {fileID: 1606307272}
   combo: 0
   multiplicador: 1
+  audPlayer: {fileID: 831373950}
+  delay: 2.83
 --- !u!4 &1823071938
 Transform:
   m_ObjectHideFlags: 0
@@ -3580,7 +3599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f67380b14a6373d4fb0ba2d1ec250231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beatTempo: 106
+  beatTempo: 196
   hasStarted: 0
 --- !u!4 &2117941476
 Transform:
@@ -3590,7 +3609,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2117941474}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.34, y: 7.87, z: -0.47964695}
+  m_LocalPosition: {x: 0, y: 7.87, z: -0.47964695}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1565408933}
@@ -3613,6 +3632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Nota: {fileID: 4857265090564642253, guid: 994a93df03f13f94893f0d47911b53fe, type: 3}
+  posOffset: 10
   NoteHolder: {fileID: 2117941476}
 --- !u!1 &2125296780
 GameObject:
