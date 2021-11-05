@@ -10,7 +10,16 @@ public class NoteLoader : MonoBehaviour
     public GameObject Nota;
     public float posOffset;
     public Transform NoteHolder;
-    int[] notelist = { 70, 61, 65, 51, 63, 66, 42, 46, 47, 59 }; 
+    int[] notelist = { 70, 61, 65, 51, 63, 66, 42, 46, 47, 59 };
+    public float offset;
+
+   public enum ButtonNumbers
+    {
+        Azul = 1,
+        Rojo = 2,
+        Amarillo= 3,
+        Verde = 4
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -23,9 +32,46 @@ public class NoteLoader : MonoBehaviour
     {
         
     }
-    public void CreateNote (MPTKEvent mptk,float PosX)
+    public void CreateNote (MPTKEvent mptk,float PosX, ButtonNumbers Note)
     {
+
         GameObject part1 = Instantiate(Nota, new Vector3(PosX, mptk.RealTime / 300 + posOffset, 0), Quaternion.identity, NoteHolder);
+
+        NoteObject noteo = part1.GetComponent<NoteObject>();
+        SpriteRenderer spriterenderer = part1.GetComponent<SpriteRenderer>();
+
+        switch (Note)
+        {
+            case ButtonNumbers.Azul:
+                {
+                    noteo.keyToPress = KeyCode.A;
+                    spriterenderer.color = Color.blue;
+
+                }break;
+
+            case ButtonNumbers.Rojo:
+                {
+                    noteo.keyToPress = KeyCode.S;
+                    spriterenderer.color = Color.red;
+                }
+                break;
+            case ButtonNumbers.Amarillo:
+                {
+                    noteo.keyToPress = KeyCode.D;
+                    spriterenderer.color = Color.yellow;
+                }
+                break;
+            case ButtonNumbers.Verde:
+                {
+                    noteo.keyToPress = KeyCode.F;
+                    spriterenderer.color = Color.green;
+                }
+                break;
+            default:
+                break;
+        }
+        //noteo.keyToPress = KeyCode.
+
         //            part1.GetComponent<SpriteRenderer>().color = Color.blue;
     }
     private void TheMostSimpleDemoForMidiLoader()
@@ -52,19 +98,19 @@ public class NoteLoader : MonoBehaviour
         {
             if(mptkEvent.Value >= 42 && mptkEvent.Value <= 49)
             {
-                CreateNote(mptkEvent,-1.34f);      
+                CreateNote(mptkEvent,-1.34f - offset,ButtonNumbers.Azul);    //azul  
             }
             else if (mptkEvent.Value > 49  && mptkEvent.Value <= 56)
             {
-                CreateNote(mptkEvent, -0.34f);
+                CreateNote(mptkEvent, -0.34f - offset, ButtonNumbers.Rojo);  // rojo
             }
             else if (mptkEvent.Value > 56 && mptkEvent.Value <= 63)
             {
-                CreateNote(mptkEvent, 0.66f);
+                CreateNote(mptkEvent, 0.66f - offset, ButtonNumbers.Amarillo); // amarillo
             }
             else if (mptkEvent.Value > 63 && mptkEvent.Value <= 70)
             {
-                CreateNote(mptkEvent, 1.66f);
+                CreateNote(mptkEvent, 1.66f - offset, ButtonNumbers.Verde); // verde
             }
 
 
