@@ -85,7 +85,7 @@ public class NoteLoader : MonoBehaviour
         }
 
         // Index of the midi in the MidiDB (find it with 'Midi File Setup' from the menu MPTK)
-        loader.MPTK_MidiIndex = 70;
+        loader.MPTK_MidiIndex = 71;
 
         // Open and load the Midi
         loader.MPTK_Load();
@@ -96,22 +96,44 @@ public class NoteLoader : MonoBehaviour
         // Loop on each MIDI events
         foreach (MPTKEvent mptkEvent in mptkEvents)
         {
-            if(mptkEvent.Value >= 42 && mptkEvent.Value <= 49)
+            if  (HelperNoteLabel.LabelFromMidi(mptkEvent.Value)== "C5" )
             {
-                CreateNote(mptkEvent,-1.34f - offset,ButtonNumbers.Azul);    //azul  
+                CreateNote(mptkEvent, -1.34f - offset, ButtonNumbers.Azul);    //azul  
             }
-            else if (mptkEvent.Value > 49  && mptkEvent.Value <= 56)
+            else if (HelperNoteLabel.LabelFromMidi(mptkEvent.Value) == "D5")
             {
                 CreateNote(mptkEvent, -0.34f - offset, ButtonNumbers.Rojo);  // rojo
             }
-            else if (mptkEvent.Value > 56 && mptkEvent.Value <= 63)
+            else if (HelperNoteLabel.LabelFromMidi(mptkEvent.Value) == "E5")
             {
                 CreateNote(mptkEvent, 0.66f - offset, ButtonNumbers.Amarillo); // amarillo
             }
-            else if (mptkEvent.Value > 63 && mptkEvent.Value <= 70)
+            else if (HelperNoteLabel.LabelFromMidi(mptkEvent.Value) == "F5")
             {
                 CreateNote(mptkEvent, 1.66f - offset, ButtonNumbers.Verde); // verde
             }
+
+
+
+
+
+
+            //if(mptkEvent.Value >= 42 && mptkEvent.Value <= 49)
+            //{
+            //    CreateNote(mptkEvent,-1.34f - offset,ButtonNumbers.Azul);    //azul  
+            //}
+            //else if (mptkEvent.Value > 49  && mptkEvent.Value <= 56)
+            //{
+            //    CreateNote(mptkEvent, -0.34f - offset, ButtonNumbers.Rojo);  // rojo
+            //}
+            //else if (mptkEvent.Value > 56 && mptkEvent.Value <= 63)
+            //{
+            //    CreateNote(mptkEvent, 0.66f - offset, ButtonNumbers.Amarillo); // amarillo
+            //}
+            //else if (mptkEvent.Value > 63 && mptkEvent.Value <= 70)
+            //{
+            //    CreateNote(mptkEvent, 1.66f - offset, ButtonNumbers.Verde); // verde
+            //}
 
 
 
@@ -186,17 +208,17 @@ public class NoteLoader : MonoBehaviour
 
             //    default:
             //        break;
-        //}
+            //}
             // Log if event is a note on
             if (mptkEvent.Command == MPTKCommand.NoteOn)
-                Debug.Log($"Note On at {mptkEvent.RealTime} millisecond  Channel:{mptkEvent.Channel} Note:{notelist[Random.Range(0, 9)]}  Duration:{mptkEvent.Duration} millisecond  Velocity:{mptkEvent.Velocity}");
-            else if (mptkEvent.Command == MPTKCommand.PatchChange)
-                Debug.Log($"Patch Change at {mptkEvent.RealTime} millisecond  Channel:{mptkEvent.Channel}  Preset:{notelist[Random.Range(0, 9)]}");
-            else if (mptkEvent.Command == MPTKCommand.ControlChange)
-            {
-                if (mptkEvent.Controller == MPTKController.BankSelectMsb)
-                    Debug.Log($"Bank Change at {mptkEvent.RealTime} millisecond  Channel:{mptkEvent.Channel}  Bank:{notelist[Random.Range(0, 9)]}");
-            }
+                Debug.Log($"Note On at {mptkEvent.RealTime} millisecond  Channel:{mptkEvent.Channel} Note:{ HelperNoteLabel.LabelFromMidi(mptkEvent.Value)}  Duration:{mptkEvent.Duration} millisecond  Velocity:{mptkEvent.Velocity}");
+           // else if (mptkEvent.Command == MPTKCommand.PatchChange)
+            //    Debug.Log($"Patch Change at {mptkEvent.RealTime} millisecond  Channel:{mptkEvent.Channel}  Preset:{notelist[Random.Range(0, 9)]}");
+          //  else if (mptkEvent.Command == MPTKCommand.ControlChange)
+           // {
+            //    if (mptkEvent.Controller == MPTKController.BankSelectMsb)
+            //        Debug.Log($"Bank Change at {mptkEvent.RealTime} millisecond  Channel:{mptkEvent.Channel}  Bank:{notelist[Random.Range(0, 9)]}");
+           // }
             // Uncomment to display all MIDI events
             //Debug.Log(mptkEvent.ToString());
         }

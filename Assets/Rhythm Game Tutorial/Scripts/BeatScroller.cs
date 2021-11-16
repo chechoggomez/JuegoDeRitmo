@@ -10,7 +10,8 @@ public class BeatScroller : MonoBehaviour
     void Start()
     {
         hasStarted = false;
-        beatTempo = beatTempo / 60f;
+        beatTempo = beatTempo / 30f;
+        transform.position = new Vector3(0f, -6.42f , 0f);
     }
 
     // Update is called once per frame
@@ -24,7 +25,7 @@ public class BeatScroller : MonoBehaviour
             }*/
         }else
         {
-            transform.position -= new Vector3(0f, beatTempo * Time.deltaTime, 0f);
+            transform.position = new Vector3(0f, -3.335f * Time.time , 0f);
             //transform.position = transform.position - new Vector3(0f, beatTempo * Time.deltaTime, 0f);
         }
     }

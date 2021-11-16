@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour
             {
                 startPlaying = true;
                 theBS.hasStarted = true;
-                theMusic.Play();
+                
                 //cameramove.Play("CameraMovement");
                 //cameramove.SetTrigger("cameramove");
                 Invoke("PlayAudioDelayed",delay);
@@ -134,8 +134,8 @@ public class GameManager : MonoBehaviour
 
     void PlayAudioDelayed()
     {
-        audPlayer.MPTK_Play();
-
+        //audPlayer.MPTK_Play();
+        theMusic.Play();
     }
 
 }

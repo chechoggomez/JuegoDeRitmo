@@ -330,12 +330,12 @@ PrefabInstance:
     - target: {fileID: 114662785300262660, guid: 32a8d8859acf18d4ba134834a876d5ea,
         type: 3}
       propertyPath: midiNameToPlay
-      value: pianoxd
+      value: undeadmidi
       objectReference: {fileID: 0}
     - target: {fileID: 114662785300262660, guid: 32a8d8859acf18d4ba134834a876d5ea,
         type: 3}
       propertyPath: midiIndexToPlay
-      value: 70
+      value: 85
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32a8d8859acf18d4ba134834a876d5ea, type: 3}
@@ -811,10 +811,10 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 515992356}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e3903f052f6e1c84385cd598b244e788, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ad111d68e460baa43a59672c10f7182b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -3417,6 +3417,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114909309344639192, guid: 4dfa1f09b1c6b5d47966d1a4296fd412,
+        type: 3}
+      propertyPath: midiNameToPlay
+      value: pruebanotas
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909309344639192, guid: 4dfa1f09b1c6b5d47966d1a4296fd412,
+        type: 3}
+      propertyPath: midiIndexToPlay
+      value: 71
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4dfa1f09b1c6b5d47966d1a4296fd412, type: 3}
 --- !u!1 &2030347559
@@ -3587,7 +3597,7 @@ GameObject:
   - component: {fileID: 2117941475}
   - component: {fileID: 2117941477}
   m_Layer: 0
-  m_Name: NoteHolder
+  m_Name: NoteHolder_MidiLoader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3605,7 +3615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f67380b14a6373d4fb0ba2d1ec250231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beatTempo: 196
+  beatTempo: 109
   hasStarted: 0
 --- !u!4 &2117941476
 Transform:
@@ -3639,7 +3649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Nota: {fileID: 7234389597349184623, guid: 7d60d983b91f4b146aa287c5b62c08ed, type: 3}
-  posOffset: 9.5
+  posOffset: 9.91
   NoteHolder: {fileID: 2117941476}
   offset: 0.16
 --- !u!1 &2125296780
@@ -3834,7 +3844,7 @@ PrefabInstance:
     - target: {fileID: 3391010032217045769, guid: 7d60d983b91f4b146aa287c5b62c08ed,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.114
+      value: 1.95
       objectReference: {fileID: 0}
     - target: {fileID: 3391010032217045769, guid: 7d60d983b91f4b146aa287c5b62c08ed,
         type: 3}
