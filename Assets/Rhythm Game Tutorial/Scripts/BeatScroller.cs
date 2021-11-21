@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class BeatScroller : MonoBehaviour
 {
-    public float beatTempo;
+    public  float beatTempo;
+    private float speed; 
 
     public bool hasStarted;
     void Start()
     {
         hasStarted = false;
-        beatTempo = beatTempo / 30f;
+
+        speed = beatTempo / 32.697f;
         transform.position = new Vector3(0f, -6.42f , 0f);
     }
 
@@ -25,8 +27,7 @@ public class BeatScroller : MonoBehaviour
             }*/
         }else
         {
-            transform.position = new Vector3(0f, -3.335f * Time.time , 0f);
-            //transform.position = transform.position - new Vector3(0f, beatTempo * Time.deltaTime, 0f);
+            transform.position = transform.position - new Vector3(0f, speed * Time.deltaTime , 0f);
         }
     }
 }
