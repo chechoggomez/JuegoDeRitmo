@@ -122,8 +122,8 @@ public class GameManager : MonoBehaviour
                 startPlaying = true;
                 theBS.hasStarted = true;
                 
-                //cameramove.Play("CameraMovement");
-                //cameramove.SetTrigger("cameramove");
+                cameramove.Play("CameraMovement");
+                cameramove.SetTrigger("cameramove");
                 Invoke("PlayAudioDelayed",delay);
 
 

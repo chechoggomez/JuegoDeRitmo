@@ -12,6 +12,7 @@ public class NoteLoader : MonoBehaviour
     public Transform NoteHolder;
     int[] notelist = { 70, 61, 65, 51, 63, 66, 42, 46, 47, 59 };
     public float offset;
+    private float BPM;
 
    public enum ButtonNumbers
     {
@@ -24,7 +25,11 @@ public class NoteLoader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        BPM = 0;
+        NoteHolder.position = new Vector3(0f, -6.42f, 0f);
         TheMostSimpleDemoForMidiLoader();
+       
+
     }
 
     // Update is called once per frame
@@ -35,7 +40,7 @@ public class NoteLoader : MonoBehaviour
     public void CreateNote (MPTKEvent mptk,float PosX, ButtonNumbers Note)
     {
 
-        GameObject part1 = Instantiate(Nota, new Vector3(PosX, mptk.RealTime / 300 + posOffset, 0), Quaternion.identity, NoteHolder);
+        GameObject part1 = Instantiate(Nota, new Vector3(PosX, (mptk.RealTime / 300 + posOffset)*2.1795f, 0), Quaternion.identity, NoteHolder);
 
         NoteObject noteo = part1.GetComponent<NoteObject>();
         SpriteRenderer spriterenderer = part1.GetComponent<SpriteRenderer>();
@@ -74,6 +79,11 @@ public class NoteLoader : MonoBehaviour
 
         //            part1.GetComponent<SpriteRenderer>().color = Color.blue;
     }
+
+    public float get_BPM()
+    {
+        return BPM;
+    }
     private void TheMostSimpleDemoForMidiLoader()
     {
         // A MidiFileLoader prefab must be added to the hierarchy with the editor (see menu MPTK)
@@ -85,14 +95,17 @@ public class NoteLoader : MonoBehaviour
         }
 
         // Index of the midi in the MidiDB (find it with 'Midi File Setup' from the menu MPTK)
-        loader.MPTK_MidiIndex = 71;
+        loader.MPTK_MidiIndex = 72;
 
         // Open and load the Midi
         loader.MPTK_Load();
 
         // Read midi event to a List<>
         List<MPTKEvent> mptkEvents = loader.MPTK_ReadMidiEvents();
+       
 
+        BPM = 60 / (loader.MPTK_MicrosecondsPerQuarterNote / 1000000f);
+        Debug.Log("BPM: " + BPM);
         // Loop on each MIDI events
         foreach (MPTKEvent mptkEvent in mptkEvents)
         {
@@ -210,6 +223,7 @@ public class NoteLoader : MonoBehaviour
             //        break;
             //}
             // Log if event is a note on
+
             if (mptkEvent.Command == MPTKCommand.NoteOn)
                 Debug.Log($"Note On at {mptkEvent.RealTime} millisecond  Channel:{mptkEvent.Channel} Note:{ HelperNoteLabel.LabelFromMidi(mptkEvent.Value)}  Duration:{mptkEvent.Duration} millisecond  Velocity:{mptkEvent.Velocity}");
            // else if (mptkEvent.Command == MPTKCommand.PatchChange)

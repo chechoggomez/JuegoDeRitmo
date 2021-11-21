@@ -82,6 +82,8 @@
     <string>Patti Smith - Because the Night</string>
     <string>Pergolesi - Stabat Mater</string>
     <string>pianoxd</string>
+    <string>PRUEBA2</string>
+    <string>prueba3</string>
     <string>pruebanotas</string>
     <string>Reayo - Amor de Hombre</string>
     <string>Salvador Henri - Jardin D'hiver</string>

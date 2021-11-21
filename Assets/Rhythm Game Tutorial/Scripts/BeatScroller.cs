@@ -5,15 +5,17 @@ using UnityEngine;
 public class BeatScroller : MonoBehaviour
 {
     public  float beatTempo;
-    private float speed; 
-
+    private float speed;
+    public NoteLoader noteloader;
     public bool hasStarted;
     void Start()
     {
         hasStarted = false;
 
+        beatTempo = noteloader.get_BPM();
         speed = beatTempo / 32.697f;
-        transform.position = new Vector3(0f, -6.42f , 0f);
+        speed = speed * 2.1795f;
+     
     }
 
     // Update is called once per frame
